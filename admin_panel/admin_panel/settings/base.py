@@ -12,6 +12,7 @@ from pathlib import Path
 
 import dj_database_url
 
+from ballsdex.core.extra_loader import get_extra_installed_apps
 
 def discover_extra_packages() -> list[str]:
     file = os.environ.get("BALLSDEXBOT_EXTRA_TOML")
@@ -24,6 +25,14 @@ def discover_extra_packages() -> list[str]:
         return []
     packages: list = contents.get("ballsdex", {}).get("packages", [])
     return [x["path"] for x in packages if x["enabled"]]
+
+    extra_apps = get_extra_installed_apps()
+
+    for app in extra_apps:
+        if app not in packages:
+            packages.append(app)
+
+    return packages
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent

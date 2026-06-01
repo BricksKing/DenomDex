@@ -45,6 +45,8 @@ from bd_models.models import (
 )
 from settings.models import settings
 
+from ballsdex.core.extra_loader import get_extra_extensions
+
 if TYPE_CHECKING:
     from discord.ext.commands.bot import PrefixType
 
@@ -411,6 +413,14 @@ class BallsDexBot(commands.AutoShardedBot):
         for app in apps.get_app_configs():
             if dpy_package := getattr(app, "dpy_package", None):
                 packages.append((app.label, dpy_package))
+        #for package_name, extension_path in get_extra_extensions(auto_install=False):
+        #    if extension_path not in {path for _, path in packages}:
+        #        packages.append((package_name, extension_path))
+        #        log.warning(
+        #            "Loaded extra.toml package into queue: %s -> %s",
+        #            package_name,
+        #            extension_path,
+        #        )
 
         for package_name, path in packages:
             try:
