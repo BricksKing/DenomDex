@@ -1,6 +1,6 @@
 # DenomDex Discord Bot
 
-An instance based off the official [BallsDex](https://github.com/Ballsdex-Team/BallsDex-DiscordBot) instance. 
+An instance based on the official [BallsDex](https://github.com/Ballsdex-Team/BallsDex-DiscordBot) instance. Balls are based on real-life Christian denominations.
 
 For our support server, click the image below:
 
