@@ -44,3 +44,5 @@ extra/*
 !extra/.gitkeep
 .gitmodules
 ballsdex/core/extra_loader.py
+
+.env
